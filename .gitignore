@@ -11,7 +11,7 @@
 /src/config
 # testing
 /coverage
-/data
+/src/data
 # production
 /build
 
