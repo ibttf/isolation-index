@@ -33,7 +33,7 @@ const Home = () => {
   
     if (isPopulationClicked) {
       opacityExpression = [
-        'case', 
+        'case',
         ['has', 'ELDERLY_PPL_SCORE'],
         ['+', opacityExpression, ['*', ['get', 'ELDERLY_PPL_SCORE'], 0.1]],
         opacityExpression
@@ -41,15 +41,73 @@ const Home = () => {
     }
     if (isPopulation1Clicked) {
       opacityExpression = [
-        'case', 
+        'case',
         ['has', 'YOUNG_PPL_SCORE'],
         ['+', opacityExpression, ['*', ['get', 'YOUNG_PPL_SCORE'], 0.1]],
         opacityExpression
       ];
     }
   
+    if (isEthnicClicked) {
+      opacityExpression = [
+        'case',
+        ['has', 'NON_WHITE_SCORE'],
+        ['+', opacityExpression, ['*', ['get', 'NON_WHITE_SCORE'], 0.1]],
+        opacityExpression
+      ];
+    }
+    if (isLivingAloneClicked) {
+      opacityExpression = [
+        'case',
+        ['has', 'LIVE_ALONE_SCORE'],
+        ['+', opacityExpression, ['*', ['get', 'LIVE_ALONE_SCORE'], 0.1]],
+        opacityExpression
+      ];
+    }
+    if (isWidowDivorcedClicked) {
+      opacityExpression = [
+        'case',
+        ['has', 'DIVORCED_WIDOWED_SCORE'],
+        ['+', opacityExpression, ['*', ['get', 'DIVORCED_WIDOWED_SCORE'], 0.1]],
+        opacityExpression
+      ];
+    }
+    if (isMotherhoodClicked) {
+      opacityExpression = [
+        'case',
+        ['has', 'YOUNG_MOTHER_SCORE'],
+        ['+', opacityExpression, ['*', ['get', 'YOUNG_MOTHER_SCORE'], 0.1]],
+        opacityExpression
+      ];
+    }
+    if (isLgbtClicked) {
+      opacityExpression = [
+        'case',
+        ['has', 'LGBT_SCORE'],
+        ['+', opacityExpression, ['*', ['get', 'LGBT_SCORE'], 0.1]],
+        opacityExpression
+      ];
+    }
+  
+    if (isSocioEconomicClicked) {
+      opacityExpression = [
+        'case',
+        ['has', 'POVERTY_SCORE'],
+        ['+', opacityExpression, ['*', ['get', 'POVERTY_SCORE'], 0.1]],
+        opacityExpression
+      ];
+    }
+    if (isDisabilityClicked) {
+      opacityExpression = [
+        'case',
+        ['has', 'POVERTY_SCORE'],
+        ['+', opacityExpression, ['*', ['get', 'POVERTY_SCORE'], 0.1]],
+        opacityExpression
+      ];
+    }
+  
     // Ensure opacity doesn't exceed 1
-    opacityExpression = ['max', 0.1, opacityExpression];
+    opacityExpression = ['max', 0.1, ['min', 1.0, opacityExpression]];
   
     // Set the calculated opacity expression to the 'county-fill' layer
     map.current.setPaintProperty('county-fill', 'fill-opacity', opacityExpression);
@@ -274,7 +332,7 @@ useEffect(() => {
       map.current.setLayoutProperty('state-outline', 'visibility', 'none');
     }
   }
-}, [isPopulationClicked, isPopulation1Clicked, showStates]);
+}, [isPopulationClicked, isPopulation1Clicked, isLgbtClicked, isEthnicClicked, isDisabilityClicked, isMotherhoodClicked, isWidowDivorcedClicked, isSocioEconomicClicked, isLivingAloneClicked,isLgbtClicked, isFfContactClicked, showStates]);
 
 
   return (
