@@ -10,6 +10,8 @@
 .pnp.js
 /src/config
 src/data
+/src/data
+!/data
 # testing
 /coverage
 # production
