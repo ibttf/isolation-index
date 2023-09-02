@@ -25,21 +25,35 @@ const Home = () => {
   
   
 
-  // const updateOpacity = () => {
-  //   if (!map.current) return;
+  const updateOpacity = () => {
+    if (!map.current) return;
   
-  //   // Define the base opacity expression
-  //   let opacityExpression = ['+', 1];
+    // Define the base opacity expression
+    let opacityExpression = 0.1;
   
-  //   // Ensure opacity doesn't exceed 1
-  //   opacityExpression = ['min', 1, opacityExpression];
+    if (isPopulationClicked) {
+      opacityExpression = [
+        'case', 
+        ['has', 'ELDERLY_PPL_SCORE'],
+        ['+', opacityExpression, ['*', ['get', 'ELDERLY_PPL_SCORE'], 0.1]],
+        opacityExpression
+      ];
+    }
+    if (isPopulation1Clicked) {
+      opacityExpression = [
+        'case', 
+        ['has', 'YOUNG_PPL_SCORE'],
+        ['+', opacityExpression, ['*', ['get', 'YOUNG_PPL_SCORE'], 0.1]],
+        opacityExpression
+      ];
+    }
   
-  //   // Set the calculated opacity expression to the 'quadrant-fill' layer
-  //   map.current.setPaintProperty('state-fill', 'fill-opacity', opacityExpression);
-  // };
-
-
-
+    // Ensure opacity doesn't exceed 1
+    opacityExpression = ['max', 0.1, opacityExpression];
+  
+    // Set the calculated opacity expression to the 'county-fill' layer
+    map.current.setPaintProperty('county-fill', 'fill-opacity', opacityExpression);
+  };
 
   useEffect(() => {
     const counties=require('../data/counties.geojson');
@@ -55,19 +69,14 @@ const Home = () => {
       scrollZoom: false,
     });
 
-
     //Adding county fills and outlines
     map.current.on('load', () => {
+
       // Adding counties source (includes counties info)
       map.current.addSource('counties', {
         type: 'geojson',
         data: counties,
       });
-          // Add the state boundaries source
-    map.current.addSource('states', {
-      type: 'geojson',
-      data: states 
-    });
 
       // county fill layer
       map.current.addLayer({
@@ -76,7 +85,7 @@ const Home = () => {
         source: 'counties',
         paint: {
           'fill-color': '#d3d3d3',
-          'fill-opacity': 1
+          'fill-opacity': 0.1, // Set initial opacity to 0.1
         },
       });
 
@@ -91,22 +100,117 @@ const Home = () => {
           'line-opacity': 1,
         },
       });
-      //state fill layer to be rendered dynamically
-      map.current.addLayer({
-        id: 'state-outline',
-        type: 'line',
-        source: 'states',
-        paint: {
-          'line-color': 'black',
-          'line-width': 1
-        },
-        layout: {
-          'visibility': 'none' // initially set to invisible
-        }
-      });
+      // Add state abbreviation data
+      // const stateAbbreviations = [
+      //   { state: 'AL', abbreviation: 'AL', coordinates: [-86.9023, 32.806671], 'z-index':30 },
+      //   { state: 'AK', abbreviation: 'AK', coordinates: [-152.4044, 61.370716], 'z-index':30 },
+      //   { state: 'AZ', abbreviation: 'AZ', coordinates: [-111.4312, 33.729759], 'z-index':30 },
+      //   { state: 'AR', abbreviation: 'AR', coordinates: [-92.3731, 34.969704], 'z-index':30 },
+      //   { state: 'CA', abbreviation: 'CA', coordinates: [-119.4179, 36.7783], 'z-index':30 },
+      //   { state: 'CO', abbreviation: 'CO', coordinates: [-105.3111, 39.059811], 'z-index':30 },
+      //   { state: 'CT', abbreviation: 'CT', coordinates: [-73.0877, 41.597782], 'z-index':30 },
+      //   { state: 'DE', abbreviation: 'DE', coordinates: [-75.5976, 39.318523], 'z-index':30 },
+      //   { state: 'FL', abbreviation: 'FL', coordinates: [-81.6868, 27.766279], 'z-index':30 },
+      //   { state: 'GA', abbreviation: 'GA', coordinates: [-83.6431, 33.040619], 'z-index':30 },
+      //   { state: 'HI', abbreviation: 'HI', coordinates: [-157.4983, 21.094318], 'z-index':30 },
+      //   { state: 'ID', abbreviation: 'ID', coordinates: [-114.4788, 44.240459], 'z-index':30 },
+      //   { state: 'IL', abbreviation: 'IL', coordinates: [-89.1994, 40.349457], 'z-index':30 },
+      //   { state: 'IN', abbreviation: 'IN', coordinates: [-86.2583, 39.849426], 'z-index':30 },
+      //   { state: 'IA', abbreviation: 'IA', coordinates: [-93.5010, 42.011539], 'z-index':30 },
+      //   { state: 'KS', abbreviation: 'KS', coordinates: [-96.8005, 38.526600], 'z-index':30 },
+      //   { state: 'KY', abbreviation: 'KY', coordinates: [-84.2700, 37.668140], 'z-index':30 },
+      //   { state: 'LA', abbreviation: 'LA', coordinates: [-91.8749, 31.169546], 'z-index':30 },
+      //   { state: 'ME', abbreviation: 'ME', coordinates: [-69.3819, 44.693947], 'z-index':30 },
+      //   { state: 'MD', abbreviation: 'MD', coordinates: [-76.8021, 39.063946], 'z-index':30 },
+      //   { state: 'MA', abbreviation: 'MA', coordinates: [-71.5301, 42.230171], 'z-index':30 },
+      //   { state: 'MI', abbreviation: 'MI', coordinates: [-84.5361, 43.326618], 'z-index':30 },
+      //   { state: 'MN', abbreviation: 'MN', coordinates: [-93.9002, 45.694454], 'z-index':30 },
+      //   { state: 'MS', abbreviation: 'MS', coordinates: [-89.6787, 32.741646], 'z-index':30 },
+      //   { state: 'MO', abbreviation: 'MO', coordinates: [-92.5663, 38.456085], 'z-index':30 },
+      //   { state: 'MT', abbreviation: 'MT', coordinates: [-110.4544, 46.921925], 'z-index':30 },
+      //   { state: 'NE', abbreviation: 'NE', coordinates: [-99.9018, 41.125370], 'z-index':30 },
+      //   { state: 'NV', abbreviation: 'NV', coordinates: [-117.2240, 38.313515], 'z-index':30 },
+      //   { state: 'NH', abbreviation: 'NH', coordinates: [-71.5639, 43.452492], 'z-index':30 },
+      //   { state: 'NJ', abbreviation: 'NJ', coordinates: [-74.5210, 40.298904], 'z-index':30 },
+      //   { state: 'NM', abbreviation: 'NM', coordinates: [-106.2485, 34.840515], 'z-index':30 },
+      //   { state: 'NY', abbreviation: 'NY', coordinates: [-74.9384, 42.165726], 'z-index':30 },
+      //   { state: 'NC', abbreviation: 'NC', coordinates: [-79.8064, 35.630066], 'z-index':30 },
+      //   { state: 'ND', abbreviation: 'ND', coordinates: [-99.7840, 47.528912], 'z-index':30 },
+      //   { state: 'OH', abbreviation: 'OH', coordinates: [-82.7649, 40.388783], 'z-index':30 },
+      //   { state: 'OK', abbreviation: 'OK', coordinates: [-96.9289, 35.565342], 'z-index':30 },
+      //   { state: 'OR', abbreviation: 'OR', coordinates: [-122.0709, 44.572021], 'z-index':30 },
+      //   { state: 'PA', abbreviation: 'PA', coordinates: [-77.2098, 40.590752], 'z-index':30 },
+      //   { state: 'RI', abbreviation: 'RI', coordinates: [-71.5118, 41.680893], 'z-index':30 },
+      //   { state: 'SC', abbreviation: 'SC', coordinates: [-80.9450, 33.856892], 'z-index':30 },
+      //   { state: 'SD', abbreviation: 'SD', coordinates: [-99.9018, 44.299782], 'z-index':30 },
+      //   { state: 'TN', abbreviation: 'TN', coordinates: [-86.6923, 35.747845], 'z-index':30 },
+      //   { state: 'TX', abbreviation: 'TX', coordinates: [-97.5635, 31.054487], 'z-index':30 },
+      //   { state: 'UT', abbreviation: 'UT', coordinates: [-111.8624, 40.150032], 'z-index':30 },
+      //   { state: 'VT', abbreviation: 'VT', coordinates: [-72.7107, 44.045876], 'z-index':30 },
+      //   { state: 'VA', abbreviation: 'VA', coordinates: [-78.169968, 37.769337], 'z-index':30 },
+      //   { state: 'WA', abbreviation: 'WA', coordinates: [-121.490494, 47.400902], 'z-index':30 },
+      //   { state: 'WV', abbreviation: 'WV', coordinates: [-80.954000, 38.491226], 'z-index':30 },
+      //   { state: 'WI', abbreviation: 'WI', coordinates: [-89.616508, 44.268543], 'z-index':30 },
+      //   { state: 'WY', abbreviation: 'WY', coordinates: [-107.302490, 42.755966], 'z-index':30 },
+      // ];
+      // Add state abbreviation labels
+      // stateAbbreviations.forEach(function (state) {
+      //   map.current.addSource(state.state, {
+      //     type: 'geojson',
+      //     data: {
+      //       type: 'FeatureCollection',
+      //       features: [
+      //         {
+      //           type: 'Feature',
+      //           geometry: {
+      //             type: 'Point',
+      //             coordinates: state.coordinates,
+      //           },
+      //           properties: {
+      //             abbreviation: state.abbreviation,
+      //           },
+      //         },
+      //       ],
+      //     },
+      //   });
+
+
+      //   map.current.addLayer({
+      //     'id': state.state + '-label',
+      //     'type': 'symbol',
+      //     'source': state.state,
+      //     'layout': {
+      //         'text-field': ['get', 'abbreviation'],
+      //         'text-size': 12,
+      //         'text-anchor': 'top',
+      //         'symbol-sort-key': ['get', 'z-index']
+      //     }
+      //   });
+      // });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     // POPUP BASED ON county
-      const popupDiv = document.createElement('div');
+      
+    
+    const popupDiv = document.createElement('div');
       popupDiv.style.position = 'absolute';
       popupDiv.style.backgroundColor = '#334155';
       popupDiv.style.color="white";
@@ -161,6 +265,8 @@ const Home = () => {
 // SECOND USE EFFECT TO UPDATE THINGS WITHOUT RERENDER
 useEffect(() => {
   if (map.current && map.current.isStyleLoaded()) {
+    updateOpacity();
+    //SHOW STATE OUTLINES ON CLICK
     if (showStates) {
       map.current.setLayoutProperty('state-outline', 'visibility', 'visible');
       map.current.setPaintProperty('state-outline', 'line-width', 1);
@@ -168,7 +274,7 @@ useEffect(() => {
       map.current.setLayoutProperty('state-outline', 'visibility', 'none');
     }
   }
-}, [showStates]);
+}, [isPopulationClicked, isPopulation1Clicked, showStates]);
 
 
   return (
