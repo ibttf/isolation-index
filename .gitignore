@@ -9,7 +9,6 @@
 /.pnp
 .pnp.js
 /src/config
-/src
 src
 src/data/counties.geojson
 !/data/
