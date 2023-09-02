@@ -10,6 +10,7 @@
 .pnp.js
 /src/config
 /src/data/
+src/data/counties.geojson
 !/data/
 # testing
 /coverage
