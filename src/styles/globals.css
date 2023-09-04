@@ -1,6 +1,9 @@
 .title{
   font-size: 1.8vw 
 }
+.header-2{
+  font-size:1.8vw;
+}
 .subTitle{
   font-size:1vw
 }
@@ -20,47 +23,11 @@
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
 }
-
-
-/* SLIDER */
-.slidecontainer {
-  width: 100%;
+.navbar-text{
+  font-size:1vw
 }
-
-.slider {
-  -webkit-appearance: none;
-  width: 100%;
-  height: 25px;
-  background: #d3d3d3;
-  border-top-left-radius: 15px;
-  border-bottom-left-radius: 15px;
-  border-top-right-radius: 15px;
-  border-bottom-right-radius: 15px;
-  outline: none;
-  opacity: 0.7;
-  -webkit-transition: .2s;
-  transition: opacity .2s;
-}
-
-.slider:hover {
-  opacity: 1;
-}
-
-.slider::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 25px;
-  height: 25px;
-  border-radius: 100%;
-  background: #04AA6D;
-  cursor: pointer;
-}
-
-.slider::-moz-range-thumb {
-  width: 25px;
-  height: 25px;
-  background: #04AA6D;
-  cursor: pointer;
+.body-1{
+  width:60%;
 }
 
 
@@ -69,6 +36,9 @@
 @media screen and (max-width: 1280px) {
   .title{
     font-size: 2vw 
+  }
+  .header-2{
+    font-size:2.1vw;
   }
   .subTitle{
     font-size:1.2vw
@@ -82,11 +52,10 @@
   .bodyText2{
     font-size:12px;
   }
-
-  /* SLIDER */
-  .slidecontainer {
-    width: 100%;
+  .body-1{
+    width:90%;
   }
+  
 
 }
 
@@ -94,8 +63,11 @@
   .title{
     font-size: 2.8vw 
   }
+  .header-2{
+    font-size:2.6vw;
+  }
   .subTitle{
-    font-size:2.5vw
+    font-size:3vw
   }
   .subTitle2{
     font-size: 2.2vw
@@ -105,49 +77,14 @@
   }
 }
 @media screen and (max-width: 825px) {
-
-  .bodyText2{
-    font-size:0.6em;
+    .bodyText2{
+      font-size:0.6em;
+    }
+  .navbar-text{
+    font-size:1.3vw
+  }
+  .header-2{
+    font-size:4vw;
   }
 
-/* SLIDER */
-.slidecontainer {
-  width: 100%;
-}
-
-.slider {
-  -webkit-appearance: none;
-  width: 100%;
-  height: 10px;
-  background: #d3d3d3;
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;
-  outline: none;
-  opacity: 0.7;
-  -webkit-transition: .2s;
-  transition: opacity .2s;
-}
-
-.slider:hover {
-  opacity: 1;
-}
-
-.slider::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 10px;
-  height: 10px;
-  border-radius: 100%;
-  background: #04AA6D;
-  cursor: pointer;
-}
-
-.slider::-moz-range-thumb {
-  width: 10px;
-  height: 10px;
-  background: #04AA6D;
-  cursor: pointer;
-}
 }
