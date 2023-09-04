@@ -117,22 +117,22 @@ const Home = () => {
   };
 
 
-  useEffect(() => {
-    const counties=require('../data/counties.geojson');
-    const states=require('../data/states.json')
-    //SETTING INITIAL MAP IN USA WITH NO ZOOM
-    map.current = new mapboxgl.Map({
+
+useEffect(() => {
+  const counties=require('../data/counties.geojson');
+  const states=require('../data/states.json');
+
+  map.current = new mapboxgl.Map({
       container: mapContainer.current,
       style: 'mapbox://styles/mapbox/light-v10',
       center: [-96, 38],
-      zoom: 3.8,
+      zoom: getZoomLevel(),
       minZoom: 1,
       dragPan: false,
       scrollZoom: false,
-    });
+  });
 
-    //Adding county fills and outlines
-    map.current.on('load', () => {
+  map.current.on('load', () => {
 
       // Adding counties source (includes counties info)
       map.current.addSource('counties', {
@@ -233,11 +233,41 @@ const Home = () => {
     map.current.on('mouseleave', 'county-fill', () => {
         popupDiv.style.display = 'none'; // Hide the popup
     });
+
+      // Fit the bounds to the continental U.S.
+      const bounds = [
+          [-125, 24],  // Southwest coordinates
+          [-66, 49]   // Northeast coordinates
+      ];
+      map.current.fitBounds(bounds, { padding: 20 });
   });
-        
-  },[]);
 
+  // Adjust zoom level when the window is resized
+  window.addEventListener('resize', () => {
+      map.current.setZoom(getZoomLevel());
+  });
 
+  return () => {
+      // Cleanup: Remove the event listener when the component is unmounted
+      window.removeEventListener('resize', () => {
+          map.current.setZoom(getZoomLevel());
+      });
+  };
+
+}, []);
+
+// Function to determine zoom level based on screen width
+const getZoomLevel = () => {
+  const width = window.innerWidth;
+  
+  if (width <= 480) {
+      return 3.4;  // Zoom level for small screens
+  } else if (width <= 768) {
+      return 3.6;  // Zoom level for medium screens
+  } else {
+      return 3.5;  // Zoom level for large screens
+  }
+};
 
 
 
@@ -297,7 +327,7 @@ const Home = () => {
 
       {/* MAP */}
 
-        <div id="map" className="relative mx-auto rounded-3xl" style={{width: "80vw", height: "80vh"}}>
+        <div id="map" className="relative mx-auto rounded-3xl map-container" style={{width: "80vw"}}>
           <h1 className="text-gray-600 font-light text-center lg:my-6 my-3 header-2">Social Isolation Risk Factors Map</h1>
           <h2 className="text-gray-600 font-light subTitle text-center lg:mb-6 mb-3">
             View how various factors impact social isolation in American counties.
@@ -317,7 +347,7 @@ const Home = () => {
 
 
         {/* RISK FACTORS */}
-        <div id="risk-factors" className="flex pt-60 mx-auto body-1">
+        <div id="risk-factors" className="flex md:pt-60 pt-36 mx-auto body-1">
           <div className="flex flex-col bodyText w-4/12 " >
             <h1 className="text-gray-600 font-light header-2">
               Risk Factors

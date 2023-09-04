@@ -30,7 +30,9 @@
   width:60%;
 }
 
-
+.map-container{
+  height: 80vh;
+}
 
 /* Begin Media Queries*/
 @media screen and (max-width: 1280px) {
@@ -74,6 +76,9 @@
   }
   .bodyText{
     font-size:2.5vw;
+  }
+  .map-container{
+    height: 40vh;
   }
 }
 @media screen and (max-width: 825px) {
