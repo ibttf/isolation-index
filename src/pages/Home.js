@@ -588,7 +588,7 @@ const getZoomLevel = () => {
               As individuals age, they often encounter an increasing number of risk factors that can contribute to feelings of loneliness. Once one risk factor emerges, it's not uncommon for others to follow. For instance, approximately 24% of Americans aged 65 and older who live in communities are regarded as socially isolated <span className="font-semibold">[1]</span>. Furthermore, a considerable number of U.S. adults report feelings of loneliness, with 35% of those aged 45 and over and 43% of those aged 60 and over expressing such sentiments <span className="font-semibold">[1]</span>.
           </p>
           <p className="lg:mb-4 mb-1 bodyText2">
-              These compounding factors can intensify the experience of loneliness, making it particularly challenging to address in one's later years. Prominent risk factors associated with aging encompass, but are not restricted to, the following <span className="font-semibold">[2]</span>:
+              These compounding factors can intensify the experience of loneliness, making it particularly challenging to address in one's later years. Prominent risk factors associated with aging include <span className="font-semibold">[2]</span>:
           </p>
           <ul className="list-disc bodyText2 pl-5 lg:mb-4 mb-1 bodyText2">
               <li className="lg:mb-2 mb-1">Experiencing bereavement</li>
@@ -623,6 +623,10 @@ const getZoomLevel = () => {
               <li className="lg:mb-2 mb-1">Financial Constraints: 55% of young individuals identifying as lonely stated that financial restrictions, preventing them from engaging in activities, heighten their feelings of loneliness<span className="font-semibold">[6]</span>. This sentiment is particularly poignant given the current cost of living crisis<span className="font-semibold">[7]</span>.</li>
               <li className="lg:mb-2 mb-1">Social Media Influence: Approximately 56% of the youth believe that seeing their peers enjoying themselves on social platforms adversely affects their mood<span className="font-semibold">[6]</span>.</li>
           </ul>
+          <p className="lg:mb-4 mb-1 bodyText2">
+              Interestingly enough, it seems to be the case that feelings of loneliness forms a U-shaped curve, whereby the loneliest in our society are the youngest and oldest.
+          </p>
+          
       </div>
         )
       }else if (displayedRisk==="lgbt"){
@@ -630,7 +634,7 @@ const getZoomLevel = () => {
           <div className="p-4">
           <h1 className="subTitle2 font-semibold lg:mb-4 mb-1">LGBT</h1>
           <p className="lg:mb-4 mb-1 bodyText2">
-              The LGBTQ+ community faces heightened risks of loneliness<span className="font-semibold">[8]</span>. Although there's limited recent research on this topic, the available data paints a somber picture:
+              The LGBTQ+ community faces heightened risks of loneliness<span className="font-semibold">[8]</span>. Although there's limited recent research on this topic, the available data seems to point towards a correlated trend:
           </p>
           <ul className="list-disc bodyText2 pl-5 lg:mb-4 mb-1 bodyText2">
               <li className="lg:mb-2 mb-1">Social Dynamics: Experiences of social rejection, exclusion, and discrimination can intensify feelings of loneliness among LGBTQ individuals<span className="font-semibold">[9]</span>.</li>
@@ -647,6 +651,7 @@ const getZoomLevel = () => {
           <div className="p-4">
               <h2 className="subTitle2 font-bold lg:mb-4 mb-1">Ethnic Minorities</h2>
               <p className="lg:mb-4 mb-1 bodyText2">
+                  While the studies on the correlation between being an ethnic minority and social isolation are somewhat unclear, the studies do suggest that immigrating might be a contributing factor to social isolation. 
                   Migration often disrupts one's social network, necessitating the formation of new connections in a new country. This process might be hindered by barriers such as language or cultural differences, leading to feelings of loneliness. Even second-generation migrants, born in the host country, can face challenges in forming social connections due to cultural differences or their immediate social environment. Feelings of not belonging or experiences of discrimination can exacerbate loneliness. Additionally, many migrants, especially political or economic ones, might have lower financial resources or health issues compared to the native population, which can further contribute to feelings of loneliness. Understanding the primary causes of migrants' loneliness can aid in crafting effective policies to address the issue.
               </p>
 
@@ -685,7 +690,7 @@ const getZoomLevel = () => {
           <div className="p-4">
               <h2 className="subTitle2 font-bold lg:mb-4 mb-1">Young Motherhood</h2>
               <p className="lg:mb-4 mb-1 bodyText2">
-                  The transition into motherhood, particularly at a younger age, can be a significant contributor to feelings of loneliness. Various familial dynamics and circumstances underscore this relationship:
+                  The transition into motherhood, particularly at a younger age, can be a significant contributor to feelings of loneliness. Some associated reasons why this might be the case include:
               </p>
               <ul className="list-disc bodyText2 pl-6 lg:mb-4 mb-1">
                   <li className="lg:mb-2 mb-1">Family Circumstances: Situations such as adult children moving out, bereavement, becoming single, fragile family bonds, and staying at home with young children are all potential factors that can heighten loneliness[24].</li>
@@ -705,11 +710,11 @@ const getZoomLevel = () => {
         <div className="p-4">
             <h2 className="subTitle2 font-bold lg:mb-4 mb-1">Socioeconomic Status</h2>
             <p className="lg:mb-4 mb-1 bodyText2">
-                The economic standing of an individual can play a pivotal role in their experiences of loneliness. Several aspects of socioeconomic status and their relation to loneliness include:
+                Studies have repeatedly shown poor socioeconomic status to be a significant predictor of social isolation. Several aspects of socioeconomic status and their relation to loneliness include:
             </p>
             <ul className="list-disc bodyText2 pl-6 lg:mb-4 mb-1">
-                <li className="lg:mb-2 mb-1">Costs of Socialization: Engaging in activities outside the home, such as traveling to meet friends or family, participating in events, or simply socializing, often comes with associated costs. Those with limited financial means may find it challenging to maintain and establish social connections, thereby increasing their vulnerability to loneliness.</li>
-                <li className="lg:mb-2 mb-1">Indirect Impact: Financial constraints can also indirectly influence loneliness. For instance, inadequate financial resources can be associated with other factors like poor health, which can further hamper social integration and intensify feelings of loneliness.</li>
+                <li className="lg:mb-2 mb-1">Costs of Socialization: Engaging in activities outside the home, such as traveling to meet friends or family, participating in events, or simply socializing, often comes with associated costs. The less you have to spend, the less opportunities you'll thereby have to socialize.</li>
+                <li className="lg:mb-2 mb-1">Indirect Impact: Financial constraints can also indirectly influence loneliness. For instance, inadequate financial resources can be associated with other factors like poor health, which can further harm social connectedness and intensify feelings of loneliness.</li>
                 <li>Research Findings:
                     <ul className="list-decimal pl-6 mt-2">
                         <li className="lg:mb-2 mb-1">There's a consistent finding that a more stable financial situation is protective against loneliness for both younger and older adults[29][30],[31].</li>
@@ -726,10 +731,10 @@ const getZoomLevel = () => {
         <div className="p-4">
             <h2 className="subTitle2 font-bold lg:mb-4 mb-1">Widowed & Divorced</h2>
             <p className="lg:mb-4 mb-1 bodyText2">
-                Relationship status, particularly when it pertains to having a partner or spouse, is intrinsically tied to experiences of loneliness. Here's an overview:
+                Relationship status, particularly in regards to having a partner or spouse, has been shown to be significantly tied to experiences of loneliness.
             </p>
             <ul className="list-disc bodyText2 pl-6 lg:mb-4 mb-1">
-                <li className="lg:mb-2 mb-1">Relationship Status and Loneliness: Cross-sectional studies consistently show that having a partner or spouse is associated with lower levels of loneliness[34]. Conversely, being single, divorced, or widowed is linked with higher levels of loneliness[35]. Among all predictors, the link between partner status and loneliness is often one of the most robust, especially in cases of widowhood[23][36][37].</li>
+                <li className="lg:mb-2 mb-1">Relationship Status and Loneliness: Cross-sectional studies consistently show that having a partner or spouse is associated with lower levels of loneliness[34]. Conversely, being single, divorced, or widowed is linked with higher levels of loneliness[35]. Among all predictors, the link between partner status and loneliness is often one of the strongest, especially in cases of widowhood[23][36][37].</li>
                 <li className="lg:mb-2 mb-1">Longitudinal Insights: Longitudinal studies reinforce these findings, suggesting a causal relationship between partner status and loneliness[38]. Notably, negative shifts in partner status, such as the loss of a partner, often lead to a subsequent rise in loneliness among middle-aged and older adults [39][40].</li>
                 <li>Timing of Loneliness: Intriguingly, feelings of loneliness seem to intensify even before events like divorce or separation[41]. In contrast, for widowhood, a spike in loneliness typically occurs post-event[35].</li>
             </ul>
@@ -741,12 +746,13 @@ const getZoomLevel = () => {
           <div className="p-4">
               <h2 className="subTitle2 font-bold lg:mb-4 mb-1">Living Alone</h2>
               <p className="lg:mb-4 mb-1 bodyText2">
-                  The living arrangement, particularly whether one lives alone or with others, holds significant implications for feelings of loneliness. Here's a deep dive into the association:
+                  One's living arrangement, particularly whether one lives alone or with others, has been shown to be quite significantly related to feelings of loneliness.
               </p>
               <ul className="list-disc bodyText2 pl-6 lg:mb-4 mb-1">
-                  <li className="lg:mb-2 mb-1">Living with Others as a Protective Factor: Living with others, be it a partner, children, parents, or friends, might serve as a shield against loneliness[42]. This protection can stem from the emotional and other support provided by intimate figures or the sheer opportunities for socialization that cohabitation offers.</li>
-                  <li className="lg:mb-2 mb-1">Findings from Cross-Sectional Studies: Cross-sectional studies have consistently illustrated that living alone correlates with markedly higher levels of loneliness compared to living with others[43][38][44][45]. Delving further, the presence of a partner in a household appears to be the most influential factor in mitigating loneliness, especially among older adults[46][47][43].</li>
-                  <li>Living Alone and Its Ramifications: Being alone is strongly tied to heightened feelings of loneliness. Conversely, cohabiting with others, especially a partner, seems to alleviate such feelings[43]. For the elderly, residing in nursing homes or similar residential care might be linked to increased loneliness compared to those living in communities[42].</li>
+                  <li className="lg:mb-2 mb-1">Living with Others as a Protective Factor: Living with others, be it a partner, children, parents, or friends, might serve as a shield against loneliness[42]. This protection can stem from the emotional and other support provided by living companions or the increased opportunities for socialization that cohabitation offers.</li>
+                  <li className="lg:mb-2 mb-1">Findings from Cross-Sectional Studies: Cross-sectional studies have consistently illustrated that living alone correlates with markedly higher levels of loneliness compared to living with others[38][43][44][45]. Delving further, the presence of a partner in a household appears to be the most influential factor in mitigating loneliness, especially among older adults[43][46][47].</li>
+                  <li>Living Alone and Its Ramifications: Being alone is strongly tied to heightened feelings of loneliness. Conversely, cohabiting with others, especially a partner, seems to alleviate such feelings[43]. </li>
+                  <li>Nursing Homes and Retirement Centers: For the elderly, residing in nursing homes or similar residential care might actually be linked to increased loneliness compared to those living in communities[42].</li>
               </ul>
           </div>
         )
