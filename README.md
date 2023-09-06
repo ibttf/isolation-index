@@ -1,3 +1,3 @@
-# Connect America
+# Isolation Index
 
-Interactive map that displays the American states most prone to being affected by social isolation.
+Interactive map and research project that displays risk factors most related to social isolation, and the American counties that are most affected by them respectively.
