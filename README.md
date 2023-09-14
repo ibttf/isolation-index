@@ -12,11 +12,8 @@ Deployed on https://isolationindex.com
 - [Technologies Used](#technologies-used)
 - [Setup](#setup)
 - [Usage](#usage)
-- [Deploying To Heroku](#deploying-to-heroku)
-- [Troubleshooting](#troubleshooting)
 - [Project Status](#project-status)
 - [Room for Improvement](#room-for-improvement)
-- [Acknowledgements](#acknowledgements)
 
 ## General Information
 This project was built independently using React and Jupyter Notebook.
